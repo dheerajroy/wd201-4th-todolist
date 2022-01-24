@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <form action="/add-task" method="get">
+        <input type="text" name="task" placeholder="Task">
+        <input type="submit" value="Add Task">
+    </form>
+    <h2>Pending Tasks:</h2>
+    <ol>
+        {% for task in tasks %}
+            <li>{{ task }}&emsp;<a href="/complete_task/{{ forloop.counter }}">done</a>&emsp;<a href="/delete-task/{{ forloop.counter }}">delete</a></li>
+        {% empty %}
+            <h3>No pending tasks.</h3>
+        {% endfor %}
+    </ol>
+    <h2>Completed Tasks:</h2>
+    <ol>
+        {% for task in completed_tasks %}
+            <li>{{ task }}&emsp;<a href="/delete_completed_task/{{ forloop.counter }}">delete</a></li>
+        {% empty %}
+            <h3>No completed tasks.</h3>
+        {% endfor %}
+    </ol>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <h2>Completed Tasks:</h2>
+    <ol>
+        {% for task in completed_tasks %}
+            <li>{{ task }}&emsp;<a href="/delete_completed_task/{{ forloop.counter }}">delete</a></li>
+        {% empty %}
+            <h3>No completed tasks.</h3>
+        {% endfor %}
+    </ol>
+{% endblock %}
